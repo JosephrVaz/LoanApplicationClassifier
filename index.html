@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Futuristic Glass Effect</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500&family=Rajdhani:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Background */
+        body {
+            background-color: #110221;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            font-family: 'Rajdhani', sans-serif;
+            background-image: url('https://i.pinimg.com/736x/a9/87/fa/a987fac3ec4be2345ce2dc05a29055f8.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        /* Glass Box Style */
+        .glass-box {
+            width: 800px;
+            height: 600px;
+            overflow: hidden;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 20px;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            color: white;
+            position: absolute;
+            z-index: 2;
+        }
+
+        .glass-box h1 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            text-align: center;
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.6);
+        }
+
+        .content {
+            max-height: calc(100% - 80px);
+            overflow-y: auto;
+            padding-right: 15px;
+        }
+
+        .content h2 {
+            font-size: 24px;
+            margin: 10px 0;
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 1px;
+            text-shadow: 0 0 6px rgba(0, 255, 255, 0.8);
+        }
+
+        .content h3 {
+            font-family: 'Orbitron', sans-serif;
+            text-shadow: 0 0 6px rgba(0, 255, 255, 0.8);
+        }
+
+        .content p {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            font-weight: bold;
+            color: #00ffff;
+            text-shadow: 0 0 8px rgba(0, 255, 255, 0.8);
+        }
+
+        .glass-box::before {
+            content: '';
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            right: 5px;
+            bottom: 5px;
+            background: rgba(0, 255, 255, 0.1);
+            border-radius: 15px;
+            z-index: -1;
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.5), 0 0 60px rgba(0, 255, 255, 0.2);
+        }
+
+        /* Table Styling */
+        .glowing-table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+            text-align: center;
+            font-size: 18px;
+        }
+
+        .glowing-table th, .glowing-table td {
+            padding: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .glowing-table th {
+            background: rgba(255, 255, 255, 0.1);
+            text-shadow: 0 0 8px rgba(0, 255, 255, 0.8);
+            color: #ffffff;
+            font-weight: bold;
+        }
+
+        .glowing-table td {
+            background: rgba(255, 255, 255, 0.05);
+            text-shadow: 0 0 6px rgba(0, 255, 255, 0.6);
+        }
+
+        .glowing-word {
+            font-weight: bold;
+            color: #00ffff;
+            text-shadow: 0 0 12px rgba(0, 255, 255, 1);
+        }
+
+        /* Hyperlink Styling */
+        .futuristic-link {
+            display: inline-block;
+            color: #00ffff;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: bold;
+            text-decoration: none;
+            text-shadow: 0 0 8px rgba(0, 255, 255, 0.8);
+            padding: 10px 20px;
+            border: 2px solid rgba(0, 255, 255, 0.6);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .futuristic-link:hover {
+            color: #ffffff;
+            background: rgba(0, 255, 255, 0.2);
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.8);
+            text-shadow: 0 0 15px rgba(255, 255, 255, 1);
+            
+        }
+
+          /* Code Block Styling */
+          .code-block {
+            margin-top: 20px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.6);
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 16px;
+            color: #00ffea;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            line-height: 1.6;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
+        }
+
+        .code-block span {
+            color: #ff7b00;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="glass-box">
+        <h1>Loan Classification Project Details</h1>
+        <div class="content">
+            <h2>Project Overview</h2>
+            <p>This projects aims to create an accurate and robust loan classifier based certain financial factors</p>
+
+            <h2>Dataset</h2>
+            <p>The Loan Approval Classification Dataset is a synthetic dataset that was inspired from the Credit Risk Dataset. This dataset 13 features  that directly impact the loan approvals and one 
+                target variable named loan status. The dataset had 45k records, of which 
+                is mostly imbalanced. Most of the dataset is skewed towards the not approved status. The dataset was sourced from Kaggle.</p>
+            <h4> <a href="https://www.kaggle.com/datasets/taweilo/loan-approval-classification-data" class="futuristic-link"> See Dataset</a></h4>
+
+
+            <h2>Methodlogy</h2>
+            <h3>Preprocessing</h3>
+            <p>
+                - Label Encoding <br>
+                - Standard Scaling (after splitting) <br>
+                - Desampling <br>
+                - Converting to Tensors <br>
+                
+            </p>
+            <h3>Model</h3>
+            <p>This model contains three fully connected layers<br> 
+                ______________________________________________<br>
+                Layer 1 (Input): 13 input neurons, 64 output <br>
+                Relu Activation <br>
+                ______________________________________________<br>
+                Layer 2 (Hidden): 64 input neurons, 32 output <br> 
+                Relu Activation <br>
+                ______________________________________________<br>
+                Layer 3 (Input): 32 input neurons, 1 output <br>  
+                Sigmoid Activation <br>
+            </p>
+            <h3>Training</h3>
+            <p>
+                - load model <br>
+                - define optimizer function  <br>
+                - define loss function <br>
+                - define a learning rate of 0.0001 <br>
+                - Load train data using data loader with a batch size of 32 <br>
+                - train for 100 epochs by calculating loss and updating weights <br>
+            
+            </p>
+            <div class="code-block">
+                <code>
+<span>//Output of trainig</span>
+Epoch 1/100, Loss: 0.6351
+Epoch 11/100, Loss: 0.5920
+Epoch 21/100, Loss: 0.5744
+Epoch 31/100, Loss: 0.5957
+Epoch 41/100, Loss: 0.5893
+Epoch 51/100, Loss: 0.6022
+Epoch 61/100, Loss: 0.6025
+Epoch 71/100, Loss: 0.5531
+Epoch 81/100, Loss: 0.5542
+Epoch 91/100, Loss: 0.5830
+                </code>
+<span>//Losses flucating due to the differences in batch. Some batches maybe harder to learn then others</span>
+            </div>
+            <h3>Hyperparamter Tuning</h3>
+            <p>Defined a custom function that </p>
+            <div class="content">
+                <div class="code-block">
+    <code>
+    <span>//Hyperparameter Function</span>
+    #function to try all combinations of hyperparameters and return best one
+    def hyperparameter_tuning(model):
+      #define all the hyperpaarameters in lists
+      loss_selections =[nn.BCELoss(), nn.BCEWithLogitsLoss()]
+      optimizer_selections = [optim.Adam, optim.SGD, optim.RMSprop]
+      lr_selections = [0.0001, 0.001, 0.01]
+      batch_selections = [32, 64, 128]
+      #training
+      epochs = 100
+      best_accuracy = 0
+      best_params = ""
+      #nested forloop to go through all combinations
+      for loss_selection in loss_selections:
+        for optimizer_selection in optimizer_selections:
+          for lr_selection in lr_selections:
+            for batch_selection in batch_selections:
+              model = Classiffier()
+              criterion = loss_selection
+              optimizer = optimizer_selection(model.parameters(), lr=lr_selection)
+              train_dataset = data_utils.TensorDataset(X_train, y_train)
+              train_loader = data_utils.DataLoader(train_dataset, batch_size=batch_selection, shuffle=True)
+              for epoch in range(epochs):
+                for batch_idx, (data, target) in enumerate(train_loader):
+                  optimizer.zero_grad()
+                  outputs = model(data)
+                  loss = criterion(outputs, target)
+                  loss.backward()
+                  optimizer.step()
+              #testing
+              model.eval()
+              with torch.no_grad():
+                total_correct = 0
+                total_samples = 0
+                for data, target in test_loader:
+                  outputs = model(data)
+                  predicted = (outputs > 0.5).float()
+    
+                  # accuracy
+                  total_correct += (predicted == target).sum().item()
+                  total_samples += target.size(0)
+                accuracy = total_correct / total_samples
+                info = (f'''
+                  __________________________________
+                  Loss: {loss_selection},
+                  Optimizer: {optimizer_selection},
+                  Learning Rate: {lr_selection},
+                  Batch Size: {batch_selection},
+                  Unseeen Data Accuracy: {accuracy}
+                  __________________________________
+                      ''')
+                #updating best parameters
+                if accuracy > best_accuracy:
+                  best_accuracy = accuracy
+                  best_params = info
+      return best_params    
+    </code>
+                </div>
+            </div>
+            <p> Returned the following result : </p>
+                <div class="code-block">
+                    <code>
+                        __________________________________
+                        Loss: BCELoss(),
+                        Optimizer: <class 'torch.optim.adam.Adam'>, 
+                        Learning Rate: 0.001,
+                        Batch Size: 128,
+                        Unseeen Data Accuracy: 0.9
+                        __________________________________
+                    </code>
+                </div>
+                <p> These are the ideal parameters that ensure high accuracy.</p>
+
+
+            <h2>Evaluation (after tuning) </h2>
+            <div class="code-block">
+                <code>
+model.eval()
+with torch.no_grad():
+    total_correct = 0
+    total_samples = 0
+    for data, target in test_loader:
+        outputs = model(data)
+        predicted = (outputs > 0.5).float()
+
+        # Count correct predictions for this batch
+        total_correct += (predicted == target).sum().item()
+        total_samples += target.size(0)
+
+    # Calculate overall accuracy
+    accuracy = total_correct / total_samples
+    print(f'Unseeen Data Accuracy: {accuracy}')
+<span> Unseen Data Accuracy: 0.9</span>
+                </code>
+            </div>
+            <table class="glowing-table">
+                <tr>
+                    <th><span class="glowing-word"></span></th>
+                    <th><span class="glowing-word">Precision</span></th>
+                    <th><span class="glowing-word">Recall</span></th>
+                    <th><span class="glowing-word">F1</span></th>
+                </tr>
+                <tr>
+                    <td><span class="glowing-word">Class: 0</span></td>
+                    <td><span class="glowing-word">0.90</span></td>
+                    <td><span class="glowing-word">0.90</span></td>
+                    <td><span class="glowing-word">0.90</span></td>
+                </tr>
+                <tr>
+                    <td><span class="glowing-word">Class:1</span></td>
+                    <td><span class="glowing-word">0.90</span></td>
+                    <td><span class="glowing-word">0.90</span></td>
+                    <td><span class="glowing-word">0.90</span></td>
+                </tr>
+            </table>
+
+            <h2>Insights</h2>
+            <p>
+                BEFORE HYPERTUNING: <br>
+                - good at identifying loan rejections <br>
+                - trouble identifying loan approvals <br>
+                After HYPERTUNING <br>
+                - good at both idenitfying loan approvals and rejection <br>
+            </p>
+            <h4> <a href="https://www.google.com" class="futuristic-link"> See Full Implemnetation</a></h4>
+        </div>
+    </div>
+
+</body>
+</html>
